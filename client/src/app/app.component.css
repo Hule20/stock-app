@@ -1,0 +1,12 @@
+nav ul {
+    list-style: none; /* Remove list decoration */
+    display: flex; /* Set display to flex for horizontal layout */
+    justify-content: space-between; /* Add spacing between items */
+  }
+  
+  nav ul li a {
+    text-decoration: none; /* Remove underline */
+    color: black; /* Set color */
+    padding: 1em; /* Add padding for spacing */
+  }
+  

@@ -1,0 +1,23 @@
+<div class="user-details">
+    <h2>User Details</h2>
+    <p>First Name: {{ user?.firstName }}</p>
+    <p>Last Name: {{ user?.lastName }}</p>
+    <p>Email: {{user?.email}}</p>
+  
+    <h3>Stocks</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Ticker</th>
+          <th>Company</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stock of user?.stocks">
+          <td>{{ stock?.ticker }}</td>
+          <td>{{ stock?.company }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
