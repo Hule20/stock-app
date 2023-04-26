@@ -20,120 +20,108 @@ namespace FinalsProjectAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<User>>> All()
+        public async Task<ActionResult<List<Stock>>> All()
         {
-            var stocks = await _testContext.Users
-                .Include(u => u.UserStocks)
-                .ThenInclude(s => s.Stock)
+            var stocks = await _testContext.Stocks
                 .ToListAsync();
 
-            var mappedUsers = new List<UserDTO>();
-            foreach (var user in users)
+            var mappedStocks = new List<StockDTO>();
+            foreach (var stock in stocks)
             {
-                mappedUsers.Add(UserDTO.MapFrom(user));
+                mappedStocks.Add(StockDTO.MapFrom(stock));
             }
 
-            return Ok(mappedUsers);
+            return Ok(mappedStocks);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> Single(int id)
+        public async Task<ActionResult<Stock>> Single(int id)
         {
-            var user = await _testContext.Users
-                .Include(u => u.UserStocks)
-                .ThenInclude(s => s.Stock)
+            var stock = await _testContext.Stocks
                 .FirstOrDefaultAsync(i => i.ID == id);
 
-            if (user == null)
+            if (stock == null)
             {
                 return NotFound();
             }
 
-            var mappedUser = UserDTO.MapFrom(user);
+            var mappedStock = StockDTO.MapFrom(stock);
 
 
-            return Ok(mappedUser);
+            return Ok(mappedStock);
         }
 
         [HttpPost]
-        public async Task<ActionResult<List<User>>> Create([FromBody] User userDto)
+        public async Task<ActionResult<List<Stock>>> Create([FromBody] Stock stockDto)
         {
-            var user = new User
+            var stock = new Stock
             {
                 //ID = userDto.ID, nepotrebna linija jer sam dodjeljuje vrijednost ID-a
-                FirstName = userDto.FirstName,
-                LastName = userDto.LastName,
-                Email = userDto.Email,
-                Password = userDto.Password
+                Ticker = stockDto.Ticker,
+                Company = stockDto.Company
             };
-            await _testContext.Users.AddAsync(user);
+            await _testContext.Stocks.AddAsync(stock);
             await _testContext.SaveChangesAsync();
 
-            return Ok(user);
+            return Ok(stock);
         }
 
         //ccording to the HTTP specification, a PUT request requires the client to send
         //the entire updated entity, not just the changes. To support partial updates, use HTTP PATCH.
         [HttpPut("{id}")]
-        public async Task<ActionResult<User>> Update([FromBody] User userDto, int id)
+        public async Task<ActionResult<Stock>> Update([FromBody] Stock stockDto, int id)
         {
-            if (id != userDto.ID)
+            if (id != stockDto.ID)
             {
                 return NotFound();
             }
 
-            _testContext.Entry(userDto).State = EntityState.Modified;
+            _testContext.Entry(stockDto).State = EntityState.Modified;
 
             await _testContext.SaveChangesAsync();
-
 
             return Ok();
         }
 
         [HttpPatch("{id}")]
-        public async Task<ActionResult<User>> UpdatePartial([FromBody] User userDto, int id)
+        public async Task<ActionResult<Stock>> UpdatePartial([FromBody] Stock stockDto, int id)
         {
-            var result = await _testContext.Users.FindAsync(id);
+            var stock = await _testContext.Stocks.FindAsync(id);
 
-            if (result == null)
+            if (stock == null)
             {
                 return NotFound();
             }
 
-            if (!string.IsNullOrWhiteSpace(userDto.FirstName))
+            if (!string.IsNullOrWhiteSpace(stockDto.Ticker))
             {
-                result.FirstName = userDto.FirstName;
+                stock.Ticker = stockDto.Ticker;
             }
 
-            if (!string.IsNullOrWhiteSpace(userDto.LastName))
+            if (!string.IsNullOrWhiteSpace(stockDto.Company))
             {
-                result.LastName = userDto.LastName;
-            }
-
-            if (!string.IsNullOrWhiteSpace(userDto.Email))
-            {
-                result.Email = userDto.Email;
+                stock.Company = stockDto.Company;
             }
 
             await _testContext.SaveChangesAsync();
 
-            return Ok(result);
+            return Ok(stock);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<User>> Delete(int id)
+        public async Task<ActionResult<Stock>> Delete(int id)
         {
-            var result = await _testContext.Users.FindAsync(id);
+            var stock = await _testContext.Stocks.FindAsync(id);
 
-            if (result == null)
+            if (stock == null)
             {
                 return NotFound();
             }
 
-            _testContext.Users.Remove(result);
+            _testContext.Stocks.Remove(stock);
             await _testContext.SaveChangesAsync();
 
-            return Ok(result);
+            return Ok(stock);
         }
 
     }

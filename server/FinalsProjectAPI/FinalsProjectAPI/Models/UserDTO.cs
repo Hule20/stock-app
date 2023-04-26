@@ -25,12 +25,7 @@ namespace FinalsProjectAPI.Models
                 Console.WriteLine("Userstocks empty");
                 foreach (var item in user.UserStocks.ToList())
                 {
-                    var stockDto = new StockDTO();
-                    stockDto.ID = item.Stock.ID;
-                    stockDto.Ticker = item.Stock.Ticker;
-                    stockDto.Company = item.Stock.Company;
-
-                    userDto.Stocks.Add(stockDto);
+                    userDto.Stocks.Add(StockDTO.MapFrom(item.Stock));
                 }
             }
 
