@@ -3,5 +3,7 @@
   <button (click)="search(searchValue)">Search</button>
 </div>
 <ul>
-  <li *ngFor="let symbol of stocksFound">{{ symbol }}</li>
+  <li *ngFor="let stock of stocksFound">
+    {{ stock.ticker }} <button (click)="addStock(stock)" mat-raised-button color="primary">Add new...</button>
+  </li>
 </ul>
