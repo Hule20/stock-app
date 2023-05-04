@@ -1,0 +1,7 @@
+<div>
+  <input type="text" [(ngModel)]="searchValue" placeholder="Search..." />
+  <button (click)="search(searchValue)">Search</button>
+</div>
+<ul>
+  <li *ngFor="let symbol of stocksFound">{{ symbol }}</li>
+</ul>

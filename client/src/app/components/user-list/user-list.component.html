@@ -1,3 +1,9 @@
+<div>
+  <button mat-raised-button color="primary" (click)="openDialog()">
+    Add new...
+  </button>
+</div>
+
 <table>
   <thead>
     <tr>
@@ -17,15 +23,16 @@
       <td>{{ user.email }}</td>
       <td>{{ user.password }}</td>
       <td>
-        <a
+        <button
           [routerLink]="['/Users', user.id]"
           [routerLinkActive]="['active']"
           ariaCurrentWhenActive="page"
           class="btn btn-details"
-          >Details</a
         >
+          Details
+        </button>
         <button class="btn btn-update">Update</button>
-        <button class="btn btn-delete">Delete</button>
+        <button (click)="deleteUser(user.id)" class="btn btn-delete">Delete</button>
       </td>
     </tr>
   </tbody>

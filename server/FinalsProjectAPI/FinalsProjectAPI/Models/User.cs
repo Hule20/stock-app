@@ -10,7 +10,7 @@ namespace FinalsProjectAPI.Models
         public string Email { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
 
-        [JsonIgnore]
+
         public IEnumerable<UserStock> UserStocks { get; set; } = new List<UserStock>();
     }
 }

@@ -30,6 +30,7 @@ namespace FinalsProjectAPI.Controllers
             var mappedUsers = new List<UserDTO>();
             foreach (var user in users)
             {
+                //await Console.Out.WriteLineAsync(user);
                 mappedUsers.Add(UserDTO.MapFrom(user));
             }
 
@@ -56,7 +57,7 @@ namespace FinalsProjectAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<List<User>>> Create([FromBody] User userDto)
+        public async Task<ActionResult<List<User>>> Create([FromBody] UserDTO userDto)
         {
             var user = new User
             {

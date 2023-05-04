@@ -15,9 +15,21 @@ export class UserService {
     return this.http.get<User[]>(apiUrl);
   }
 
-  public getSingleUser(id: string){
+  public getSingleUser(id: string) {
     const apiUrl = `https://localhost:7018/api/User/${id}`;
 
     return this.http.get<User>(apiUrl);
+  }
+
+  public create(data: any) {
+    const apiUrl = 'https://localhost:7018/api/User';
+
+    return this.http.post(apiUrl, data);
+  }
+
+  public delete(id: string) {
+    const apiUrl = `https://localhost:7018/api/User/${id}`;
+
+    return this.http.delete(apiUrl);
   }
 }

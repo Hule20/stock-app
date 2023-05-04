@@ -8,8 +8,11 @@ namespace FinalsProjectAPI.Models
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+
 
         public List<StockDTO> Stocks { get; set; } = new List<StockDTO>();
+
 
         public static UserDTO MapFrom(User user)
         {
@@ -19,10 +22,10 @@ namespace FinalsProjectAPI.Models
             userDto.FirstName = user.FirstName;
             userDto.LastName = user.LastName;
             userDto.Email = user.Email;
+            userDto.Password = user.Password;
 
             if (user.UserStocks != null)
             {
-                Console.WriteLine("Userstocks empty");
                 foreach (var item in user.UserStocks.ToList())
                 {
                     userDto.Stocks.Add(StockDTO.MapFrom(item.Stock));

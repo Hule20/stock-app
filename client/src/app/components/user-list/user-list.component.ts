@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/services/user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -8,14 +11,28 @@ import { UserService } from 'src/services/user.service';
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private dialogRef: MatDialog, private router: Router) {}
 
   public users: User[] = [];
 
   ngOnInit() {
     this.userService.getUsers().subscribe((data: User[]) => {
       this.users = data;
-      console.log(this.users);
     });
+  }
+
+  openDialog(){
+    this.dialogRef.open(AddUserDialogComponent);
+  }
+
+  deleteUser(id: string){
+    this.userService.delete(id).subscribe({
+      next: ((res: any) => {
+        this.router.navigate(['Dashboard']);
+      }),
+      error: ((err: any) => {
+        console.log(err);
+      })
+    })
   }
 }

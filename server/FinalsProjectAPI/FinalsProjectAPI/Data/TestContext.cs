@@ -11,13 +11,13 @@ namespace FinalsProjectAPI.Data
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<UserStock> UserStocks { get; set; }
+        //public DbSet<UserStock> UserStocks { get; set; }
         public DbSet<Stock> Stocks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().ToTable("User");
-            modelBuilder.Entity<UserStock>().ToTable("UserStock");
+            //modelBuilder.Entity<UserStock>().ToTable("UserStock");
             modelBuilder.Entity<Stock>().ToTable("Stock");
 
             modelBuilder.Entity<User>().HasData(
