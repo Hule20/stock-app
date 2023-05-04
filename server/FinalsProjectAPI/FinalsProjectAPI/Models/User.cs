@@ -11,6 +11,6 @@ namespace FinalsProjectAPI.Models
         public string Password { get; set; } = string.Empty;
 
 
-        public IEnumerable<UserStock> UserStocks { get; set; } = new List<UserStock>();
+        public ICollection<UserStock> UserStocks { get; set; } = new List<UserStock>();
     }
 }
