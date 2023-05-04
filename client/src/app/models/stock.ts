@@ -3,5 +3,3 @@ export interface Stock {
   company: string;
   lastPrice: string;
 }
-
-

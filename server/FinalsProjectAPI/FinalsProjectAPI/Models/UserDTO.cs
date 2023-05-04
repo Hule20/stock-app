@@ -16,14 +16,13 @@ namespace FinalsProjectAPI.Models
 
         public static UserDTO MapFrom(User user)
         {
-            var userDto = new UserDTO
-            {
-                ID = user.ID,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email,
-                Password = user.Password
-            };
+            var userDto = new UserDTO();
+
+            userDto.ID = user.ID;
+            userDto.FirstName = user.FirstName;
+            userDto.LastName = user.LastName;
+            userDto.Email = user.Email;
+            userDto.Password = user.Password;
 
             if (user.UserStocks != null)
             {

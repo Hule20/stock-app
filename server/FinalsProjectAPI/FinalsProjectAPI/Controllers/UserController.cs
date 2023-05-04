@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Linq;
 
 namespace FinalsProjectAPI.Controllers
 {
@@ -20,7 +19,6 @@ namespace FinalsProjectAPI.Controllers
             _testContext = testContext;
         }
 
-
         [HttpGet]
         public async Task<ActionResult<List<User>>> All()
         {
@@ -32,6 +30,7 @@ namespace FinalsProjectAPI.Controllers
             var mappedUsers = new List<UserDTO>();
             foreach (var user in users)
             {
+                //await Console.Out.WriteLineAsync(user);
                 mappedUsers.Add(UserDTO.MapFrom(user));
             }
 
@@ -68,14 +67,13 @@ namespace FinalsProjectAPI.Controllers
                 Email = userDto.Email,
                 Password = userDto.Password
             };
-
             await _testContext.Users.AddAsync(user);
             await _testContext.SaveChangesAsync();
 
             return Ok(user);
         }
 
-        //according to the HTTP specification, a PUT request requires the client to send
+        //ccording to the HTTP specification, a PUT request requires the client to send
         //the entire updated entity, not just the changes. To support partial updates, use HTTP PATCH.
         [HttpPut("{id}")]
         public async Task<ActionResult<User>> Update([FromBody] User userDto, int id)
@@ -94,7 +92,7 @@ namespace FinalsProjectAPI.Controllers
         }
 
         [HttpPatch("{id}")]
-        public async Task<ActionResult<User>> UpdatePartial([FromBody] UserDTO userDto, int id)
+        public async Task<ActionResult<User>> UpdatePartial([FromBody] User userDto, int id)
         {
             var result = await _testContext.Users.FindAsync(id);
 
@@ -138,5 +136,6 @@ namespace FinalsProjectAPI.Controllers
 
             return Ok(result);
         }
+
     }
 }

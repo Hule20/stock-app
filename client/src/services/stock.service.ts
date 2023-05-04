@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Stock } from 'src/app/models/stock';
-import { StockInfo } from 'src/app/models/stockInfo';
 import { map } from 'rxjs/operators';
 import { API_KEY_ALPHA_VANTAGE } from 'src/config';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -45,7 +43,7 @@ export class StockService {
     );
   }
 
-  public autoSearch(searchValue: string): Observable<StockInfo[]> {
+  public autoSearch(searchValue: string) {
     var params = {
       function: 'SYMBOL_SEARCH',
       keywords: searchValue,
@@ -55,20 +53,14 @@ export class StockService {
 
     return this.http.get<any>(apiUrl).pipe(
       map((data) => {
-        let stocks: StockInfo[] = [];
+        let symbols: string[] = [];
 
         data.bestMatches.forEach((match: any) =>
-        stocks.push( { ticker: match['1. symbol'], company: match['2. name'] })
+          symbols.push(match['1. symbol'])
         );
         
-        return stocks;
+        return symbols;
       })
     );
-  }
-
-  public add(data: any) {
-    const apiUrl = 'https://localhost:7018/api/Stock';
-
-    return this.http.post(apiUrl, data);
   }
 }

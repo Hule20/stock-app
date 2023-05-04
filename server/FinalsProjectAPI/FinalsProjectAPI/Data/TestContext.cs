@@ -11,7 +11,7 @@ namespace FinalsProjectAPI.Data
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<UserStock> UserStocks { get; set; }
+        //public DbSet<UserStock> UserStocks { get; set; }
         public DbSet<Stock> Stocks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
