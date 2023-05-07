@@ -36,14 +36,7 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>Action</th>
     <td mat-cell *matCellDef="let user">
-      <button
-        [routerLink]="['/Users', user.id]"
-        [routerLinkActive]="['active']"
-        ariaCurrentWhenActive="page"
-        class="btn btn-details"
-      >
-        Details
-      </button>
+      <app-details-btn [routePath]="'/Users'" [model]="user"></app-details-btn>
       <button class="btn btn-update">Update</button>
       <button (click)="deleteUser(user.id)" class="btn btn-delete">
         Delete

@@ -26,6 +26,7 @@ import { UserAccountComponent } from './pages/user-account/user-account.componen
 import { MatCardModule } from '@angular/material/card';
 import { StockListComponent } from './components/stock-list/stock-list.component';
 import { MatTableModule } from '@angular/material/table';
+import { DetailsBtnComponent } from './components/buttons/details-btn/details-btn.component';
 
 const appRoute: Routes = [
   { path: '', component: HomeComponent },
@@ -63,7 +64,8 @@ const appRoute: Routes = [
     StocksComponent,
     HomeComponent,
     UserAccountComponent,
-    StockListComponent
+    StockListComponent,
+    DetailsBtnComponent
   ],
   imports: [
     BrowserModule,

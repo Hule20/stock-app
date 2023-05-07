@@ -27,8 +27,7 @@ export class UserDetailsComponent {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((data) => {
-      //this.id = data['id'];
-      this.id = '1';
+      this.id = data['id'];
     });
 
     this.userService.getSingleUser(this.id).subscribe((data: User) => {
