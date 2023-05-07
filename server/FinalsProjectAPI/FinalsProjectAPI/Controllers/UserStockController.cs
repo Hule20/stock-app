@@ -1,6 +1,7 @@
 ﻿using FinalsProjectAPI.Data;
 using FinalsProjectAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalsProjectAPI.Controllers
 {
@@ -18,10 +19,23 @@ namespace FinalsProjectAPI.Controllers
 
 
         [HttpPatch("{id}")]
-        public async Task<ActionResult<User>> AddStockToUser([FromBody] int stockId, int id)
+        public async Task<ActionResult<User>> AddStockToUser([FromBody] StockDTO stockDto, int id)
         {
             var userResult = await _testContext.Users.FindAsync(id);
-            var stockResult = await _testContext.Stocks.FindAsync(stockId);
+            var stockResult = await _testContext.Stocks.FirstOrDefaultAsync(s => s.Ticker == stockDto.Ticker);
+
+            if (stockResult == null)
+            {
+                var newStock = new Stock
+                {
+                    Ticker = stockDto.Ticker,
+                    Company = stockDto.Company
+                };
+                await _testContext.Stocks.AddAsync(newStock);
+                await _testContext.SaveChangesAsync();
+
+                stockResult = newStock;
+            }
 
             UserStock newUserStock = new UserStock
             {

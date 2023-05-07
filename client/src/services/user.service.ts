@@ -32,4 +32,8 @@ export class UserService {
 
     return this.http.delete(apiUrl);
   }
+
+  public addStock(stockId: string) {
+    const apiUrl = `https://localhost:7018/api/UserStock/${stockId}`;
+  }
 }

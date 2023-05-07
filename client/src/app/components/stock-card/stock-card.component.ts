@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Stock } from 'src/app/models/stock';
-import { StockService } from 'src/services/stock.service';
+import { StockInfo } from 'src/app/models/stockInfo';
+import { StockDBService } from 'src/services/stockDB.service';
 
 @Component({
   selector: 'app-stock-card',
@@ -9,16 +10,14 @@ import { StockService } from 'src/services/stock.service';
 })
 
 export class StockCardComponent {
-
-  public stock?: Stock;
+  @Input() stock!: StockInfo;
   
-  constructor(private stockService: StockService) { }
+  constructor(private stockDBService: StockDBService) { }
 
-  ngOnInit() {
-    // this.stockService.getSingleStock().subscribe({
-    //   next: (data) => {
-    //     this.stock = data;
-    //   }
-    // });
+  public addStockToUser(){
+    return this.stockDBService.add(this.stock, '1').subscribe({
+      next: (res) => console.log("added stock to this user's list"),
+      error: (err) => console.log("error while adding a stock to user's list" + err)
+    })
   }
 }

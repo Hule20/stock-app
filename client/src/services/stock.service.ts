@@ -58,9 +58,9 @@ export class StockService {
         let stocks: StockInfo[] = [];
 
         data.bestMatches.forEach((match: any) =>
-        stocks.push( { ticker: match['1. symbol'], company: match['2. name'] })
+          stocks.push({ ticker: match['1. symbol'], company: match['2. name'] })
         );
-        
+
         return stocks;
       })
     );

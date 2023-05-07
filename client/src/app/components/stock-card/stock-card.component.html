@@ -1,9 +1,9 @@
-<div class="stock-card">
-  <div class="stock-card-header">
-    <h3 class="stock-card-title">{{ stock?.company || 'GameStop' }}</h3>
-    <span class="stock-card-ticker">{{ stock?.ticker || 'GME' }}</span>
-  </div>
-  <div class="stock-card-body">
-    <p class="stock-card-info">{{ stock?.lastPrice || '420' }}</p>
-  </div>
-</div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ stock?.company || 'GameStop' }}</mat-card-title>
+    <mat-card-subtitle>{{ stock?.ticker || 'GME' }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions align="end">
+    <button (click)="addStockToUser()"color="primary" mat-button>ADD</button>
+  </mat-card-actions>
+</mat-card>

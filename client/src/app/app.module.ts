@@ -20,10 +20,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { StocksComponent } from './pages/stocks/stocks.component';
+import { HomeComponent } from './pages/home/home.component';
+import { UserAccountComponent } from './pages/user-account/user-account.component';
+import { MatCardModule } from '@angular/material/card';
+import { StockListComponent } from './components/stock-list/stock-list.component';
+import { MatTableModule } from '@angular/material/table';
 
 const appRoute: Routes = [
-  { path: '', component: StockSearchComponent },
-  { path: 'Stocks', component: StockCardComponent },
+  { path: '', component: HomeComponent },
+  { path: 'Stocks', component: StocksComponent },
   {
     path: 'Dashboard',
     component: DashboardComponent,
@@ -32,8 +38,13 @@ const appRoute: Routes = [
         path: 'Users',
         component: UserListComponent,
       },
+      {
+        path: 'Stocks',
+        component: StockListComponent,
+      },
     ],
   },
+  { path: 'MyAccount', component: UserAccountComponent },
   { path: 'Users/:id', component: UserDetailsComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
@@ -49,6 +60,10 @@ const appRoute: Routes = [
     BannerComponent,
     DashboardComponent,
     AddUserDialogComponent,
+    StocksComponent,
+    HomeComponent,
+    UserAccountComponent,
+    StockListComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +77,8 @@ const appRoute: Routes = [
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatCardModule,
+    MatTableModule,
   ],
   providers: [StockService],
   bootstrap: [AppComponent],

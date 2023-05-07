@@ -13,11 +13,12 @@ import { Router } from '@angular/router';
 export class UserListComponent {
   constructor(private userService: UserService, private dialogRef: MatDialog, private router: Router) {}
 
-  public users: User[] = [];
+  public dataSource: User[] = [];
+  displayedColumns: string[] = ['ID', 'first-name', 'last-name', 'email', 'password', 'action'];
 
   ngOnInit() {
-    this.userService.getUsers().subscribe((data: User[]) => {
-      this.users = data;
+    this.userService.getUsers().subscribe((resp: User[]) => {
+      this.dataSource = resp;
     });
   }
 
