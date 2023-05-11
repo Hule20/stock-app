@@ -5,5 +5,6 @@
   </mat-card-header>
   <mat-card-actions align="end">
     <button (click)="addStockToUser()"color="primary" mat-button>ADD</button>
+    <app-details-btn [routePath]="'/Stocks'" [routeParam]="stock.ticker" ></app-details-btn>
   </mat-card-actions>
 </mat-card>

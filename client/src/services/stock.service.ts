@@ -6,6 +6,21 @@ import { map } from 'rxjs/operators';
 import { API_KEY_ALPHA_VANTAGE } from 'src/config';
 import { Observable } from 'rxjs';
 
+export interface CompanyInfo {
+  name: string,
+  symbol: string,
+  description: string,
+  exchange: string,
+  sector: string,
+  industry: string,
+  highestYearly: string,
+  lowestYearly: string,
+  marketCap: string,
+  sharesOutstanding: string,
+  dividendDate: string,
+  exDividendDate: string,
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -19,6 +34,7 @@ export class StockService {
   };
 
   constructor(private http: HttpClient) {}
+
 
   public getSingleStock() {
     const apiUrl = `${this.baseUrl}?function=${this.params.function}&symbol=${this.params.symbol}&interval=${this.params.interval}&apikey=${this.params.apikey}`;
@@ -66,9 +82,35 @@ export class StockService {
     );
   }
 
-  public add(data: any) {
-    const apiUrl = 'https://localhost:7018/api/Stock';
+  public getCompanyInfo(searchValue: string) {
+    var params = {
+      function: 'OVERVIEW',
+      symbol: searchValue,
+      apikey: API_KEY_ALPHA_VANTAGE,
+    };
+    const apiUrl = `${this.baseUrl}?function=${params.function}&symbol=${params.symbol}&apikey=${params.apikey}`;
 
-    return this.http.post(apiUrl, data);
+    console.log(apiUrl)
+
+    return this.http.get(apiUrl).pipe(
+      map((response: any) => {
+        let stockInfo: CompanyInfo = {
+          name: response['Name'],
+          symbol: response['Symbol'],
+          description: response['Description'],
+          exchange: response['Exchange'],
+          sector: response['Sector'],
+          industry: response['Industry'],
+          highestYearly: response['HighestYearly'],
+          lowestYearly: response['LowestYearly'],
+          marketCap: response['MarketCap'],
+          sharesOutstanding: response['SharesOutstanding'],
+          dividendDate: response['DividendDate'],
+          exDividendDate: response['ExDividendDate'],
+        };
+    
+        return stockInfo;
+      })
+    );
   }
 }

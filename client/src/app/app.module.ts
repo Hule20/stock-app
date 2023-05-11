@@ -27,6 +27,9 @@ import { MatCardModule } from '@angular/material/card';
 import { StockListComponent } from './components/stock-list/stock-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { DetailsBtnComponent } from './components/buttons/details-btn/details-btn.component';
+import { CdkMenuModule } from '@angular/cdk/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { CompanyDetailsComponent } from './components/company-details/company-details.component';
 
 const appRoute: Routes = [
   { path: '', component: HomeComponent },
@@ -47,6 +50,7 @@ const appRoute: Routes = [
   },
   { path: 'MyAccount', component: UserAccountComponent },
   { path: 'Users/:id', component: UserDetailsComponent },
+  { path: 'Stocks/:symbol', component: CompanyDetailsComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
@@ -65,7 +69,8 @@ const appRoute: Routes = [
     HomeComponent,
     UserAccountComponent,
     StockListComponent,
-    DetailsBtnComponent
+    DetailsBtnComponent,
+    CompanyDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +86,8 @@ const appRoute: Routes = [
     MatButtonModule,
     MatCardModule,
     MatTableModule,
+    CdkMenuModule,
+    MatIconModule,
   ],
   providers: [StockService],
   bootstrap: [AppComponent],

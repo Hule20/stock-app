@@ -19,4 +19,11 @@ namespace FinalsProjectAPI.Models
             return stockDto;
         }
     }
+
+    public class StockDTODetailed
+    {
+        public int ID { get; set; }
+        public string Ticker { get; set; }
+        public string Company { get; set; }
+    }
 }
