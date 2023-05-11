@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Stock } from 'src/app/models/stock';
 import { StockInfo } from 'src/app/models/stockInfo';
+import { CompanyInfo } from 'src/services/stock.service';
 import { StockDBService } from 'src/services/stockDB.service';
 
 @Component({

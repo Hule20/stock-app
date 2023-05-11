@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./details-btn.component.css']
 })
 export class DetailsBtnComponent {
-  @Input() model: any;
-  @Input() routePath: any;
+  @Input() routeParam: any;
+  @Input() routePath: any; 
 }

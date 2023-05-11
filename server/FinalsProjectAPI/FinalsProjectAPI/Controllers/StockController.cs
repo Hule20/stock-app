@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using FinalsProjectAPI.News;
+using System.Net.Http.Headers;
+using System.Net.Http;
 
 namespace FinalsProjectAPI.Controllers
 {

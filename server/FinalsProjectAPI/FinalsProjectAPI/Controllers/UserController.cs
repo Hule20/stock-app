@@ -62,7 +62,6 @@ namespace FinalsProjectAPI.Controllers
         {
             var user = new User
             {
-                //ID = userDto.ID, nepotrebna linija jer sam dodjeljuje vrijednost ID-a
                 FirstName = userDto.FirstName,
                 LastName = userDto.LastName,
                 Email = userDto.Email,

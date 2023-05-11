@@ -1,9 +1,18 @@
-
-
 <mat-form-field class="example-form-field">
   <mat-label>Enter a stock ticker...</mat-label>
-  <input matInput type="text" [(ngModel)]="searchValue">
-  <button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="search(searchValue)">
+  <input matInput type="text" [(ngModel)]="searchValue" />
+  <button
+    *ngIf="searchValue"
+    matSuffix
+    mat-icon-button
+    aria-label="Search"
+    (click)="search(searchValue)"
+  >
+    <mat-icon
+      aria-hidden="false"
+      aria-label="search icon"
+      fontIcon="search"
+    ></mat-icon>
   </button>
 </mat-form-field>
 <div *ngFor="let stock of stocksFound">
