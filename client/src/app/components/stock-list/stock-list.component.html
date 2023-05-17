@@ -17,9 +17,11 @@
     <td mat-cell *matCellDef="let stock">{{ stock.company }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="company">
-    <th mat-header-cell *matHeaderCellDef>Company</th>
-    <td mat-cell *matCellDef="let stock">{{ stock.company }}</td>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let stock">
+      <app-details-btn [routePath]="'/Stocks'" [routeParam]="stock.ticker"></app-details-btn>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

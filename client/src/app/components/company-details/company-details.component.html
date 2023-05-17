@@ -1,20 +1,24 @@
 <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{ companyDetails.name }}</mat-card-title>
-      <mat-card-subtitle>{{ companyDetails.symbol }}</mat-card-subtitle>
-    </mat-card-header>
-  
-    <mat-card-content>
-      <p><strong>Description:</strong> {{ companyDetails.description }}</p>
-      <p><strong>Exchange:</strong> {{ companyDetails.exchange }}</p>
-      <p><strong>Sector:</strong> {{ companyDetails.sector }}</p>
-      <p><strong>Industry:</strong> {{ companyDetails.industry }}</p>
-      <!-- Add more details as needed -->
-    </mat-card-content>
-  
-    <mat-card-actions>
-      <button mat-button color="primary">Edit</button>
-      <button mat-button color="warn">Delete</button>
-    </mat-card-actions>
-  </mat-card>
-  
+  <mat-card-header>
+    <mat-card-title>{{ companyDetails.name }}</mat-card-title>
+    <mat-card-subtitle>{{ companyDetails.symbol }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p><strong>Description:</strong> {{ companyDetails.description }}</p>
+    <p><strong>Exchange:</strong> {{ companyDetails.exchange }}</p>
+    <p><strong>Sector:</strong> {{ companyDetails.sector }}</p>
+    <p><strong>Industry:</strong> {{ companyDetails.industry }}</p>
+    <p><strong>Highest Yearly:</strong> {{ companyDetails.highestYearly }}</p>
+    <p><strong>Lowest Yearly:</strong> {{ companyDetails.lowestYearly }}</p>
+    <p><strong>Market Cap:</strong> {{ companyDetails.marketCap }}</p>
+    <p><strong>Shares Outstanding:</strong> {{ companyDetails.sharesOutstanding }}</p>
+    <p><strong>Dividend Date:</strong> {{ companyDetails.dividendDate }}</p>
+    <p><strong>Ex-Dividend Date:</strong> {{ companyDetails.exDividendDate }}</p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button color="primary">Edit</button>
+    <button mat-button color="warn">Delete</button>
+  </mat-card-actions>
+</mat-card>

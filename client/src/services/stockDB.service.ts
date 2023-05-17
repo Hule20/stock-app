@@ -17,7 +17,7 @@ import { StockInfo } from "src/app/models/stockInfo";
     }
 
     public add(data: StockInfo, id: string) {
-      const apiUrl = `https://localhost:7018/api/UserStock/${id}`;
+      const apiUrl = `https://localhost:7018/api/WatchList/${id}`;
   
       return this.http.patch(apiUrl, data);
     }

@@ -20,7 +20,7 @@ export class StockListComponent {
   constructor(private stockDBService: StockDBService) {}
 
   public dataSource: StockDto[] = [];
-  displayedColumns: string[] = ['ID', 'ticker', 'company'];
+  displayedColumns: string[] = ['ID', 'ticker', 'company', 'actions'];
 
   ngOnInit() {
     this.stockDBService.getAll().subscribe((resp) => {

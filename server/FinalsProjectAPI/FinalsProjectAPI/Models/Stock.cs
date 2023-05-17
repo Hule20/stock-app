@@ -9,6 +9,6 @@ namespace FinalsProjectAPI.Models
         public string Company { get; set; }
 
         [JsonIgnore]
-        public IEnumerable<UserStock> UserStocks { get; set; } = new List<UserStock>();
+        public IEnumerable<WatchList> UserStocks { get; set; } = new List<WatchList>();
     }
 }

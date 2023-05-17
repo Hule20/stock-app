@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+#Additional
+server/FinalsProjectAPI/FinalsProjectAPI/Config.cs
+
 # User-specific files
 *.rsuser
 *.suo

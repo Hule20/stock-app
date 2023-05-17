@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Cors;
-
+using FinalsProjectAPI.Clients;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +36,11 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 {
     //options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
+
+builder.Services.AddHttpClient<IAlphaVantageClient, AlphaVantageClient>(client =>
+{
+    client.BaseAddress = new Uri("https://www.alphavantage.co/");
 });
 
 

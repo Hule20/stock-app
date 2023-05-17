@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace FinalsProjectAPI.Models
 {
-    public class UserStock
+    public class WatchList
     {
         [Key]
         public int ID { get; set; }

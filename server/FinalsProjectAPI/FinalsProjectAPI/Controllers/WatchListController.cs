@@ -7,12 +7,12 @@ namespace FinalsProjectAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserStockController : ControllerBase
+    public class WatchListController : ControllerBase
     {
 
         private readonly TestContext _testContext;
 
-        public UserStockController(TestContext testContext)
+        public WatchListController(TestContext testContext)
         {
             _testContext = testContext;
         }
@@ -37,7 +37,7 @@ namespace FinalsProjectAPI.Controllers
                 stockResult = newStock;
             }
 
-            UserStock newUserStock = new UserStock
+            WatchList newUserStock = new WatchList
             {
                 UserID = userResult.ID,
                 StockID = stockResult.ID

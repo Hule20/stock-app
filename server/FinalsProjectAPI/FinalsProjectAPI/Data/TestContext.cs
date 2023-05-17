@@ -11,7 +11,7 @@ namespace FinalsProjectAPI.Data
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<UserStock> UserStocks { get; set; }
+        public DbSet<WatchList> UserStocks { get; set; }
         public DbSet<Stock> Stocks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -46,12 +46,12 @@ namespace FinalsProjectAPI.Data
                 new Stock { ID = 4, Ticker = "NOK", Company = "Nokia" }
             );
 
-            modelBuilder.Entity<UserStock>().HasData(
-                new UserStock { ID = 1, UserID = 1, StockID = 1 },
-                new UserStock { ID = 2, UserID = 1, StockID = 2 },
-                new UserStock { ID = 3, UserID = 1, StockID = 3 },
-                new UserStock { ID = 4, UserID = 2, StockID = 1 },
-                new UserStock { ID = 5, UserID = 2, StockID = 3 }
+            modelBuilder.Entity<WatchList>().HasData(
+                new WatchList { ID = 1, UserID = 1, StockID = 1 },
+                new WatchList { ID = 2, UserID = 1, StockID = 2 },
+                new WatchList { ID = 3, UserID = 1, StockID = 3 },
+                new WatchList { ID = 4, UserID = 2, StockID = 1 },
+                new WatchList { ID = 5, UserID = 2, StockID = 3 }
             );
 
             base.OnModelCreating(modelBuilder);
