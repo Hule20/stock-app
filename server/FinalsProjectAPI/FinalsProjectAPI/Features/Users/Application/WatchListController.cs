@@ -1,9 +1,10 @@
 ﻿using FinalsProjectAPI.Data;
-using FinalsProjectAPI.Models;
+using FinalsProjectAPI.Features.Stocks.Domain;
+using FinalsProjectAPI.Features.Users.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinalsProjectAPI.Controllers
+namespace FinalsProjectAPI.Features.Users.Application
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -19,7 +20,7 @@ namespace FinalsProjectAPI.Controllers
 
 
         [HttpPatch("{id}")]
-        public async Task<ActionResult<User>> AddStockToUser([FromBody] StockDTO stockDto, int id)
+        public async Task<ActionResult<User>> AddStockToUser([FromBody] Stock stockDto, int id)
         {
             var userResult = await _testContext.Users.FindAsync(id);
             var stockResult = await _testContext.Stocks.FirstOrDefaultAsync(s => s.Ticker == stockDto.Ticker);
@@ -37,7 +38,7 @@ namespace FinalsProjectAPI.Controllers
                 stockResult = newStock;
             }
 
-            WatchList newUserStock = new WatchList
+            Watchlist newUserStock = new Watchlist
             {
                 UserID = userResult.ID,
                 StockID = stockResult.ID

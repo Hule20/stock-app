@@ -1,10 +1,8 @@
-﻿using FinalsProjectAPI.Clients;
-using FinalsProjectAPI.Data;
-using FinalsProjectAPI.Models;
-using Microsoft.AspNetCore.Http;
+﻿using FinalsProjectAPI.Features.News.Infrastructure;
+using FinalsProjectAPI.Features.Stocks.Domain;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FinalsProjectAPI.Controllers
+namespace FinalsProjectAPI.Features.Stocks.Application
 {
     [Route("api/[controller]")]
     [ApiController]

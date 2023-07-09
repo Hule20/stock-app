@@ -1,4 +1,4 @@
-﻿namespace FinalsProjectAPI.News
+﻿namespace FinalsProjectAPI.Features.News.Domain
 {
     public class NewsArticle
     {

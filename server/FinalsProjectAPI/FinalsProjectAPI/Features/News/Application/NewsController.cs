@@ -1,7 +1,8 @@
-﻿using FinalsProjectAPI.News;
+﻿using FinalsProjectAPI.Features.News.Domain;
+using FinalsProjectAPI.Features.News.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FinalsProjectAPI.Controllers
+namespace FinalsProjectAPI.Features.News.Application
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -13,7 +14,7 @@ namespace FinalsProjectAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<NewsArticle>>> getNews()
         {
-            HttpClient httpClient = new HttpClient();
+            HttpClient httpClient = new();
 
             var ns = new NewsApiScraper(httpClient);
             var newsList = await ns.GetNews();

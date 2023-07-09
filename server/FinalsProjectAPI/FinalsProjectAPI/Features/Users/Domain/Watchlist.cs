@@ -1,9 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+﻿using FinalsProjectAPI.Features.Stocks.Domain;
+using System.ComponentModel.DataAnnotations;
 
-namespace FinalsProjectAPI.Models
+namespace FinalsProjectAPI.Features.Users.Domain
 {
-    public class WatchList
+    public class Watchlist
     {
         [Key]
         public int ID { get; set; }

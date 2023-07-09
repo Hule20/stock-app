@@ -1,6 +1,6 @@
-﻿using FinalsProjectAPI.Models;
+﻿using FinalsProjectAPI.Features.Stocks.Domain;
+using FinalsProjectAPI.Features.Users.Domain;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
 
 namespace FinalsProjectAPI.Data
 {
@@ -11,7 +11,7 @@ namespace FinalsProjectAPI.Data
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<WatchList> UserStocks { get; set; }
+        public DbSet<Watchlist> UserStocks { get; set; }
         public DbSet<Stock> Stocks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -46,12 +46,12 @@ namespace FinalsProjectAPI.Data
                 new Stock { ID = 4, Ticker = "NOK", Company = "Nokia" }
             );
 
-            modelBuilder.Entity<WatchList>().HasData(
-                new WatchList { ID = 1, UserID = 1, StockID = 1 },
-                new WatchList { ID = 2, UserID = 1, StockID = 2 },
-                new WatchList { ID = 3, UserID = 1, StockID = 3 },
-                new WatchList { ID = 4, UserID = 2, StockID = 1 },
-                new WatchList { ID = 5, UserID = 2, StockID = 3 }
+            modelBuilder.Entity<Watchlist>().HasData(
+                new Watchlist { ID = 1, UserID = 1, StockID = 1 },
+                new Watchlist { ID = 2, UserID = 1, StockID = 2 },
+                new Watchlist { ID = 3, UserID = 1, StockID = 3 },
+                new Watchlist { ID = 4, UserID = 2, StockID = 1 },
+                new Watchlist { ID = 5, UserID = 2, StockID = 3 }
             );
 
             base.OnModelCreating(modelBuilder);

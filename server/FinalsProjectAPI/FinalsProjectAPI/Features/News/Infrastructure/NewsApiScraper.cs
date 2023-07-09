@@ -1,17 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using FinalsProjectAPI.Data;
-using FinalsProjectAPI.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.JsonPatch;
+﻿using FinalsProjectAPI.Features.News.Domain;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
-using System.Text.Json.Nodes;
 using System.Text.Json;
-using System.Net.Http.Headers;
 
-namespace FinalsProjectAPI.News
+namespace FinalsProjectAPI.Features.News.Infrastructure
 {
     public class NewsApiScraper : INewsScraper
     {

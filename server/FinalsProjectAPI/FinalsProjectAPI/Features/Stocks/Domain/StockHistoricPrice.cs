@@ -1,4 +1,4 @@
-﻿namespace FinalsProjectAPI.Models
+﻿namespace FinalsProjectAPI.Features.Stocks.Domain
 {
     public class StockHistoricPrice
     {

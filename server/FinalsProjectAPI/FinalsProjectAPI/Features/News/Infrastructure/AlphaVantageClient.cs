@@ -1,11 +1,10 @@
 ﻿using FinalsProjectAPI.Data;
-using FinalsProjectAPI.Models;
+using FinalsProjectAPI.Features.Stocks.Domain;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using System.Text.Json;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
-namespace FinalsProjectAPI.Clients
+namespace FinalsProjectAPI.Features.News.Infrastructure
 {
     public class AlphaVantageClient : IAlphaVantageClient
     {
@@ -29,7 +28,6 @@ namespace FinalsProjectAPI.Clients
                 var content = await response.Content.ReadAsStringAsync();
                 var jsonResponseContentRoot = JsonDocument.Parse(content).RootElement;
 
-                await Console.Out.WriteLineAsync("content" + content);
                 var stockInDb = await _testContext.Stocks.FirstOrDefaultAsync(s => s.Ticker == ticker);
                 if (stockInDb == null)
                 {

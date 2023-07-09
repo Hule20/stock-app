@@ -1,10 +1,7 @@
 using FinalsProjectAPI.Data;
+using FinalsProjectAPI.Features.News.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
 using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Cors;
-using FinalsProjectAPI.Clients;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,7 +57,10 @@ using (var scope = app.Services.CreateScope())
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        options.ConfigObject.AdditionalItems.Add("operationsSorter", "method");
+    });
 }
 
 app.UseHttpsRedirection();
